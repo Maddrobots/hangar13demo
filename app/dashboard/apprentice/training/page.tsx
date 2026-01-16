@@ -241,7 +241,7 @@ export default async function TrainingPage({ searchParams }: PageProps) {
         >
           {learningObjectives.length > 0 ? (
             <ul className="space-y-3">
-              {learningObjectives.map((objective, index) => (
+              {learningObjectives.map((objective: string, index: number) => (
                 <li key={index} className="flex items-start gap-3">
                   <span className="text-green-600 mt-0.5">✓</span>
                   <span className="text-sm">{objective}</span>
