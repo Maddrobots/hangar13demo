@@ -31,9 +31,11 @@ const signupSchema = z
         "Password must contain at least one uppercase and one lowercase letter"
       ),
     confirmPassword: z.string(),
-    role: z.enum(["apprentice", "mentor"], {
-      required_error: "Please select a role",
-    }),
+    role: z
+      .string({ required_error: "Please select a role" })
+      .refine((val) => val === "apprentice" || val === "mentor", {
+        message: "Please select a role",
+      }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
