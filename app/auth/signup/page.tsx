@@ -32,7 +32,7 @@ const signupSchema = z
       ),
     confirmPassword: z.string(),
     role: z
-      .string({ required_error: "Please select a role" })
+      .string()
       .refine((val) => val === "apprentice" || val === "mentor", {
         message: "Please select a role",
       }),
