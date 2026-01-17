@@ -71,11 +71,21 @@ export function LogbookEntryForm() {
     setIsSubmitting(true);
 
     try {
+      // Calculate start/end time from hours (simplified - using 9am as start)
+      const startTime = "09:00";
+      const hours = data.hoursWorked;
+      const endHour = 9 + Math.floor(hours);
+      const endMinute = Math.round((hours % 1) * 60);
+      const endTime = `${endHour.toString().padStart(2, "0")}:${endMinute.toString().padStart(2, "0")}`;
+
       const result = await createLogbookEntry({
         entryDate: data.entryDate,
+        startTime,
+        endTime,
         hoursWorked: data.hoursWorked,
-        entryType: data.entryType,
-        notes: data.notes,
+        taskDescription: `${data.entryType}: ${data.notes}`,
+        ataChapter: "General",
+        certified: false,
       });
 
       if (result.error) {

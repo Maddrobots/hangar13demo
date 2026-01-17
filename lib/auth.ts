@@ -100,5 +100,5 @@ export async function requireAuth(): Promise<ActiveUser> {
     redirect("/auth/login");
   }
 
-  return user;
+  return user as ActiveUser; // Type assertion safe because redirect throws if user is null
 }

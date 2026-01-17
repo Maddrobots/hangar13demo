@@ -345,8 +345,13 @@ export default async function ApprenticeDetailPage({ params }: PageProps) {
 
       {/* Entries List */}
       <ApprenticeEntriesList
-        entries={entries}
-        entriesByStatus={entriesByStatus}
+        entries={entries || []}
+        entriesByStatus={entriesByStatus || {
+          submitted: [],
+          approved: [],
+          rejected: [],
+          draft: [],
+        }}
       />
     </div>
   );

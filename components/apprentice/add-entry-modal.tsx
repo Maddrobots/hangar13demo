@@ -37,7 +37,7 @@ const logbookEntrySchema = z
       .min(10, "Task description must be at least 10 characters")
       .max(500, "Task description cannot exceed 500 characters"),
     ataChapter: z.string().min(1, "ATA Chapter is required"),
-    certified: z.boolean().default(false),
+    certified: z.boolean(),
   })
   .refine((data) => {
     // Validate that end time is after start time
