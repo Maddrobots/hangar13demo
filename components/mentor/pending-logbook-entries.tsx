@@ -183,7 +183,7 @@ export function PendingLogbookEntries({ entries, initialNameFilter = "" }: Pendi
 
                 {entry.skills_practiced && entry.skills_practiced.length > 0 && (
                   <div className="flex flex-wrap gap-1">
-                    {entry.skills_practiced.map((skill, idx) => (
+                    {entry.skills_practiced.map((skill: string, idx: number) => (
                       <span
                         key={idx}
                         className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary"

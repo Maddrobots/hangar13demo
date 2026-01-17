@@ -266,16 +266,16 @@ export default async function ApprenticeDetailPage({ params }: PageProps) {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between text-sm mb-2">
                 <span className="text-muted-foreground">Overall Progress</span>
-                <span className="font-semibold text-lg">{progress.overall}%</span>
+                <span className="font-semibold text-lg">{progress?.overall ?? 0}%</span>
               </div>
               <div className="w-full bg-secondary rounded-full h-3 mb-2">
                 <div
                   className="bg-primary rounded-full h-3 transition-all"
-                  style={{ width: `${progress.overall}%` }}
+                  style={{ width: `${progress?.overall ?? 0}%` }}
                 />
               </div>
               <div className="text-xs text-muted-foreground">
-                {progress.completed} of {progress.total} items completed
+                {progress?.completed ?? 0} of {progress?.total ?? 0} items completed
               </div>
             </CardContent>
           </Card>
@@ -288,7 +288,7 @@ export default async function ApprenticeDetailPage({ params }: PageProps) {
                   <Calendar className="h-4 w-4" />
                   Current Week
                 </span>
-                <span className="font-semibold text-lg">Week {weeks.current}</span>
+                <span className="font-semibold text-lg">Week {weeks?.current ?? 0}</span>
               </div>
               <div className="text-xs text-muted-foreground mt-2">
                 Started {formatDate(apprentice.start_date)}
@@ -305,18 +305,18 @@ export default async function ApprenticeDetailPage({ params }: PageProps) {
                   Hours Progress
                 </span>
                 <span className="font-semibold text-lg">
-                  {hours.total.toFixed(1)} / {hours.target}
+                  {(hours?.total ?? 0).toFixed(1)} / {hours?.target ?? 0}
                 </span>
               </div>
               <div className="w-full bg-secondary rounded-full h-3 mb-2">
                 <div
                   className="bg-primary rounded-full h-3 transition-all"
-                  style={{ width: `${Math.min(hours.progress, 100)}%` }}
+                  style={{ width: `${Math.min(hours?.progress ?? 0, 100)}%` }}
                 />
               </div>
               <div className="flex items-center justify-between mt-3">
                 <div className="text-xs text-muted-foreground">
-                  {hours.progress}% complete
+                  {hours?.progress ?? 0}% complete
                 </div>
                 {getStatusBadge(progressStatus)}
               </div>
