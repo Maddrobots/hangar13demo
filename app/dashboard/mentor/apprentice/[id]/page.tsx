@@ -331,8 +331,8 @@ export default async function ApprenticeDetailPage({ params }: PageProps) {
                   <Target className="h-4 w-4" />
                   Pending Entries
                 </span>
-                <span className={`font-semibold text-3xl ${pendingEntries > 0 ? "text-primary" : ""}`}>
-                  {pendingEntries}
+                <span className={`font-semibold text-3xl ${(pendingEntries ?? 0) > 0 ? "text-primary" : ""}`}>
+                  {pendingEntries ?? 0}
                 </span>
               </div>
               <div className="text-xs text-muted-foreground mt-2">
