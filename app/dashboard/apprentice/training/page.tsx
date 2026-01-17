@@ -280,7 +280,7 @@ export default async function TrainingPage({ searchParams }: PageProps) {
         >
           {mentorQuestions.length > 0 ? (
             <ol className="space-y-3 list-decimal list-inside">
-              {mentorQuestions.map((question, index) => (
+              {mentorQuestions.map((question: string, index: number) => (
                 <li key={index} className="text-sm text-muted-foreground">
                   {question}
                 </li>
